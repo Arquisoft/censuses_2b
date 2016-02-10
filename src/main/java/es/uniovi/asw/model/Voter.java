@@ -1,96 +1,94 @@
 package es.uniovi.asw.model;
 
-/**
- * Created by Ignacio Fernandez on 10/02/2016.
- */
-
-
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
+/**
+ * 
+ * @author Naucé López
+ *
+ */
 @Entity
+@Table(name = "CensoElectoral")
 public class Voter {
 
-
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private long id;
-	 
-	 
-    public Voter() {
+	@GeneratedValue
+	private Long id;
+	@Column(nullable = false)
+	private String nombre;
+	@Column(nullable = false)
+	private String email;
+	@Column(unique = true, nullable = false)
+	private String NIF;
+	private int codColegioElectoral;
+	private String password;
+	
+	protected Voter() {}
+
+	public Voter(String nombre, String email, String NIF, int codColegioElectoral) {
+		this.nombre = nombre;
+		this.email = email;
+		this.NIF = NIF;
+		this.codColegioElectoral = codColegioElectoral;
 	}
-    
-    public Voter(String name, String email) {
-    	this.name=name;
-    	this.email=email;
-   	}
 
-	private String name;
+	public Long getId() {
+		return id;
+	}
 
-    private String email;
+	public String getNombre() {
+		return nombre;
+	}
 
-    private String NIF;
+	public String getEmail() {
+		return email;
+	}
 
-    private String password;
+	public String getNIF() {
+		return NIF;
+	}
 
-    private int pollingStatio;
+	public int getCodColegioElectoral() {
+		return codColegioElectoral;
+	}
+	
+	public String getPassword() {
+		return password;
+	}
 
+	@Override
+	public String toString() {
+		return "Voter [nombre=" + nombre + ", email=" + email + ", NIF=" + NIF + ", codColegioElectoral="
+				+ codColegioElectoral + "]";
+	}
 
-    public String getName() {
-        return name;
-    }
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((NIF == null) ? 0 : NIF.hashCode());
+		return result;
+	}
 
-    public String getEmail() {
-        return email;
-    }
-
-    public String getNIF() {
-        return NIF;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public int getPollingStatio() {
-        return pollingStatio;
-    }
-
-    public void setPollingStatio(int pollingStatio) {
-        this.pollingStatio = pollingStatio;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setNIF(String NIF) {
-        this.NIF = NIF;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Voter)) return false;
-
-        Voter voter = (Voter) o;
-
-        return NIF.equals(voter.NIF);
-
-    }
-
-    @Override
-    public int hashCode() {
-        return NIF.hashCode();
-    }
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Voter other = (Voter) obj;
+		if (NIF == null) {
+			if (other.NIF != null)
+				return false;
+		} else if (!NIF.equals(other.NIF))
+			return false;
+		return true;
+	}
+	
 }
