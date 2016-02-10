@@ -3,10 +3,31 @@ package es.uniovi.asw.model;
 /**
  * Created by Ignacio Fernandez on 10/02/2016.
  */
+
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Voter {
 
 
-    private String name;
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private long id;
+	 
+	 
+    public Voter() {
+	}
+    
+    public Voter(String name, String email) {
+    	this.name=name;
+    	this.email=email;
+   	}
+
+	private String name;
 
     private String email;
 
