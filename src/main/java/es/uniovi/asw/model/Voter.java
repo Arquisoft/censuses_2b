@@ -8,7 +8,7 @@ import javax.persistence.Table;
 
 /**
  * 
- * @author Naucé López
+ * @author Naucï¿½ Lï¿½pez
  *
  */
 @Entity
@@ -42,6 +42,10 @@ public class Voter {
 
 	public String getNombre() {
 		return nombre;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public String getEmail() {
