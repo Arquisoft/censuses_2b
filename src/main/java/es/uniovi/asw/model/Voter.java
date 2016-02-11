@@ -8,40 +8,49 @@ import javax.persistence.Table;
 
 /**
  * 
- * @author Nauc� L�pez
+ * @author Naucé López
  *
  */
 @Entity
-@Table(name = "CensoElectoral")
+@Table(name = "Census")
 public class Voter {
 
 	@Id
 	@GeneratedValue
 	private Long id;
 	@Column(nullable = false)
-	private String nombre;
-	@Column(nullable = false)
+	private String name;
+	@Column(unique = true, nullable = false)
 	private String email;
 	@Column(unique = true, nullable = false)
 	private String NIF;
-	private int codColegioElectoral;
+	@Column(nullable = false)
+	private int pollingPlace;
 	private String password;
 	
 	protected Voter() {}
 
-	public Voter(String nombre, String email, String NIF, int codColegioElectoral) {
-		this.nombre = nombre;
+	public Voter(String name, String email, String NIF, int pollingPlace) {
+		this.name = name;
 		this.email = email;
 		this.NIF = NIF;
-		this.codColegioElectoral = codColegioElectoral;
+		this.pollingPlace = pollingPlace;
+	}
+
+	public Voter(String name, String email, String NIF, int pollingPlace, String password) {
+		this.name = name;
+		this.email = email;
+		this.NIF = NIF;
+		this.pollingPlace = pollingPlace;
+		this.password = password;
 	}
 
 	public Long getId() {
 		return id;
 	}
 
-	public String getNombre() {
-		return nombre;
+	public String getName() {
+		return name;
 	}
 
 	public void setPassword(String password) {
@@ -56,18 +65,18 @@ public class Voter {
 		return NIF;
 	}
 
-	public int getCodColegioElectoral() {
-		return codColegioElectoral;
+	public int getPollingPlace() {
+		return pollingPlace;
 	}
 	
 	public String getPassword() {
 		return password;
 	}
-
+	
 	@Override
 	public String toString() {
-		return "Voter [nombre=" + nombre + ", email=" + email + ", NIF=" + NIF + ", codColegioElectoral="
-				+ codColegioElectoral + "]";
+		return "Voter [name=" + name + ", email=" + email + ", NIF=" + NIF + ", pollingPlace=" + pollingPlace
+				+ ", password=" + password + "]";
 	}
 
 	@Override
