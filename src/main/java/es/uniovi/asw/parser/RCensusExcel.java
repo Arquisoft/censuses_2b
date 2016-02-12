@@ -43,7 +43,7 @@ public class RCensusExcel extends RCensus implements ReadCensus{
 					
 					voterValues.clear();
 				}
-				
+								
 			} catch (Exception e) {
 				//Error fichero no existe
 			}

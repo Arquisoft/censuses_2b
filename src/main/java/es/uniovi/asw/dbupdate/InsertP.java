@@ -6,7 +6,7 @@ public class InsertP implements Insert {
 
 	@Override
 	public void insert(List<String> VoterValues) {
-		//Verifica los datos de entrada y genera error si corresponde
+		//Inserta y verifica en la base de datos
 	}
 
 }
