@@ -21,26 +21,26 @@ public class Voter {
 	@Column(nullable = false)
 	private String name;
 	@Column(unique = true, nullable = false)
-	private String email;
-	@Column(unique = true, nullable = false)
 	private String NIF;
-	@Column(nullable = false)
+	@Column(unique = true, nullable = false)
+	private String email;
 	private int pollingPlace;
+	@Column(nullable = false)
 	private String password;
 	
 	protected Voter() {}
 
-	public Voter(String name, String email, String NIF, int pollingPlace) {
+	public Voter(String name, String NIF, String email, int pollingPlace) {
 		this.name = name;
-		this.email = email;
 		this.NIF = NIF;
+		this.email = email;
 		this.pollingPlace = pollingPlace;
 	}
 
-	public Voter(String name, String email, String NIF, int pollingPlace, String password) {
+	public Voter(String name, String NIF, String email, int pollingPlace, String password) {
 		this.name = name;
-		this.email = email;
 		this.NIF = NIF;
+		this.email = email;
 		this.pollingPlace = pollingPlace;
 		this.password = password;
 	}

@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -13,13 +12,14 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 public class RCensusExcel extends RCensus implements ReadCensus{
 
 	@Override
-	public void read(String... paths) {
+	public List<VoterInfo> read(String... paths) {
 		XSSFWorkbook wb;
 		XSSFSheet sheet;
 		Iterator<Row> rows;
-		Iterator<Cell> cells;
+		Row row;
+		VoterInfo voterInfo;
 		
-		List<String> voterValues = new ArrayList<String>();
+		List<VoterInfo> voterValues = new ArrayList<VoterInfo>();
 		
 		for (String path:paths) {
 			this.currentFile = new File(path);
@@ -33,22 +33,24 @@ public class RCensusExcel extends RCensus implements ReadCensus{
 				rows.next();
 				
 				while (rows.hasNext()) {
-					cells = rows.next().cellIterator();
+					row = rows.next();
 					
-					while (cells.hasNext())
-						voterValues.add(cells.next().toString());
+					voterInfo = new VoterInfo(row.getCell(0) != null ? row.getCell(0).toString() : null,
+							row.getCell(1) != null ? row.getCell(1).toString() : null,
+							row.getCell(2) != null ? row.getCell(2).toString() : null,
+							row.getCell(3) != null ? row.getCell(3).toString() : null);
 					
-					this.insertDB.insert(voterValues);
-					//Generar cartas...
-					
-					voterValues.clear();
+					//Row empty, without cells
+					if (!voterInfo.isEmpty())
+						voterValues.add(voterInfo);
 				}
 								
 			} catch (Exception e) {
-				//Error fichero no existe
+				e.printStackTrace();//Error fichero no existe
 			}
 		}
 		
+		return voterValues;
 	}
 	
 }

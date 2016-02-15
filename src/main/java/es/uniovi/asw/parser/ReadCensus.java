@@ -1,6 +1,8 @@
 package es.uniovi.asw.parser;
 
+import java.util.List;
+
 public interface ReadCensus {
 
-	public void read(String... path);
+	public List<VoterInfo> read(String... path);
 }
