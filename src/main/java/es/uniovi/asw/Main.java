@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import es.uniovi.asw.model.Voter;
+import es.uniovi.asw.personalLetters.PersonalLetterGenerator;
 import es.uniovi.asw.reportGeneration.PasswordGenerator;
-import es.uniovi.asw.reportGeneration.PlainTextLetter;
 
 public class Main {
 
@@ -13,16 +13,17 @@ public class Main {
 
 		List<Voter> voters = new ArrayList<Voter>();
 
-		voters.add(new Voter("Votante1", "votante1@uniovi.es", "00000001A", 3300));
-		voters.add(new Voter("Votante2", "votante2@uniovi.es", "00000002B", 3300));
-		voters.add(new Voter("Votante3", "votante3@uniovi.es", "00000003C", 3300));
-		voters.add(new Voter("Votante4", "votante4@uniovi.es", "00000004D", 3300));
+		voters.add(new Voter("Votante1", "00000001A", "votante1@uniovi.es", 3300));
+		voters.add(new Voter("Votante2", "00000002B", "votante2@uniovi.es", 3300));
+		voters.add(new Voter("Votante3", "00000003C", "votante2@uniovi.es", 3300));
+		voters.add(new Voter("Votante4", "00000004D", "votante4@uniovi.es", 3300));
 
 		PasswordGenerator.generatePasswords(voters);
 
-		PlainTextLetter ptw = new PlainTextLetter(voters);
+		PersonalLetterGenerator psg = new PersonalLetterGenerator(voters);
+		psg.chooseWritter("p");
 
-		ptw.WriteLetter();
+		psg.writeAllLetters();
 
 	}
 
