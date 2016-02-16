@@ -1,10 +1,14 @@
 package es.uniovi.asw.parser;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -40,9 +44,12 @@ public class RCensusExcel extends RCensus implements ReadCensus{
 							row.getCell(2) != null ? row.getCell(2).toString() : null,
 							row.getCell(3) != null ? row.getCell(3).toString() : null);
 					
+					
 					//Row empty, without cells
 					if (!voterInfo.isEmpty())
 						voterValues.add(voterInfo);
+					
+					
 				}
 								
 			} catch (Exception e) {
@@ -52,5 +59,6 @@ public class RCensusExcel extends RCensus implements ReadCensus{
 		
 		return voterValues;
 	}
+
 	
 }

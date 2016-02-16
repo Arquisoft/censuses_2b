@@ -2,6 +2,7 @@ package es.uniovi.asw;
 
 import static org.junit.Assert.assertEquals;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +11,7 @@ import org.junit.Test;
 
 import es.uniovi.asw.parser.RCensusExcel;
 import es.uniovi.asw.parser.VoterInfo;
+import es.uniovi.asw.testFallos.CheckFails;
 
 public class ReadCensusExcelTest {
 
@@ -41,5 +43,6 @@ public class ReadCensusExcelTest {
 		assertEquals(3, voters.size());
 		Assert.assertArrayEquals(votersToCheck.toArray(), voters.toArray());
 	}
+
 
 }
