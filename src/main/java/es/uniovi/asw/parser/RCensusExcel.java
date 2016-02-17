@@ -1,64 +1,66 @@
 package es.uniovi.asw.parser;
 
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.logging.Logger;
 
-import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class RCensusExcel extends RCensus implements ReadCensus{
 
+	private static Logger log = Logger.getLogger(RCensusExcel.class.getName());
+	
 	@Override
-	public List<VoterInfo> read(String... paths) {
+	public List<VoterInfo> readFile(String path) {
 		XSSFWorkbook wb;
 		XSSFSheet sheet;
 		Iterator<Row> rows;
-		Row row;
+		Row row = null;
 		VoterInfo voterInfo;
 		
 		List<VoterInfo> voterValues = new ArrayList<VoterInfo>();
 		
-		for (String path:paths) {
-			this.currentFile = new File(path);
-			
-			try {
-				wb = new XSSFWorkbook(this.currentFile);
-				sheet = wb.getSheetAt(0);
-				rows = sheet.iterator();
+		try {
+
+			wb = new XSSFWorkbook(new File(path));
+			sheet = wb.getSheetAt(0);
+			rows = sheet.iterator();
 				
-				//First line (headers in excel file)
-				rows.next();
+			//First line (headers in excel file)
+			rows.next();
 				
-				while (rows.hasNext()) {
-					row = rows.next();
+			while (rows.hasNext()) {
+				row = rows.next();
 					
-					voterInfo = new VoterInfo(row.getCell(0) != null ? row.getCell(0).toString() : null,
-							row.getCell(1) != null ? row.getCell(1).toString() : null,
-							row.getCell(2) != null ? row.getCell(2).toString() : null,
-							row.getCell(3) != null ? row.getCell(3).toString() : null);
+				voterInfo = new VoterInfo(row.getCell(0) != null ? row.getCell(0).toString() : null,
+						row.getCell(1) != null ? row.getCell(1).toString() : null,
+						row.getCell(2) != null ? row.getCell(2).toString() : null,
+						row.getCell(3) != null ? row.getCell(3).toString() : null,
+						row.getRowNum());
+	
+				//Row empty, without cells
+				if (!voterInfo.isEmpty())
+					voterValues.add(voterInfo);
 					
-					
-					//Row empty, without cells
-					if (!voterInfo.isEmpty())
-						voterValues.add(voterInfo);
-					
-					
-				}
-								
-			} catch (Exception e) {
-				e.printStackTrace();//Error fichero no existe
 			}
+								
+		} catch (FileNotFoundException e) {
+			String[] fileName = path.split("/");
+			log.info("El fichero " + fileName[fileName.length - 1] + " no existe");
+		} catch (InvalidFormatException e) {
+			log.info("El fichero no es un .xslx");
+		} catch (IOException e) {
+			log.info("Error de entrada en el fichero " + path);
 		}
 		
 		return voterValues;
 	}
 
-	
 }

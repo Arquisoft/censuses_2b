@@ -6,11 +6,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-/**
- * 
- * @author Naucé López
- *
- */
 @Entity
 @Table(name = "Census")
 public class Voter {
