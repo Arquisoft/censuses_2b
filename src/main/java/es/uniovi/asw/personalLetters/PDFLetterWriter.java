@@ -17,7 +17,8 @@ public class PDFLetterWriter implements PersonalLetterWriter {
 
 		Document document = new Document();
 		try {
-			PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(voter.getNIF() + ".pdf"));
+			PdfWriter writer = PdfWriter.getInstance(document,
+					new FileOutputStream("letters/" + voter.getNIF() + ".pdf"));
 			document.open();
 			putPdfInfo(document);
 			fillDocument(voter, document);
@@ -34,7 +35,7 @@ public class PDFLetterWriter implements PersonalLetterWriter {
 	private void fillDocument(Voter voter, Document document) throws DocumentException {
 		document.add(new Paragraph("Dear :" + "\t" + voter.getName()));
 		document.add(new Paragraph("User :" + "\t" + voter.getEmail()));
-		document.add(new Paragraph("Password : " + "\t" + voter.getPassword()));
+		document.add(new Paragraph("Password :" + "\t" + voter.getPassword()));
 		document.add(new Paragraph("Thanks for using our service, hope all went well."));
 	}
 

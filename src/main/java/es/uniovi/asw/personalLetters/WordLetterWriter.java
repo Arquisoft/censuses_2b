@@ -20,7 +20,7 @@ public class WordLetterWriter implements PersonalLetterWriter {
 		XWPFDocument document = new XWPFDocument();
 		FileOutputStream out;
 		try {
-			out = new FileOutputStream(new File(voter.getNIF() + ".docx"));
+			out = new FileOutputStream(new File("letters/"+voter.getNIF() + ".docx"));
 			XWPFParagraph paragraph = document.createParagraph();
 			XWPFRun run = paragraph.createRun();
 			SetFontStyle(run);
@@ -42,7 +42,7 @@ public class WordLetterWriter implements PersonalLetterWriter {
 		run.addBreak();
 		run.setText("User :" + "\t" + voter.getEmail());
 		run.addBreak();
-		run.setText("Password : " + "\t" + voter.getPassword());
+		run.setText("Password :" + "\t" + voter.getPassword());
 		run.addBreak();
 		run.setText("Thanks for using our service, hope all went well.");
 		run.addBreak();
