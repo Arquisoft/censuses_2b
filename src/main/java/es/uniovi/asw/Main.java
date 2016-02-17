@@ -20,8 +20,7 @@ public class Main {
 
 		PasswordGenerator.generatePasswords(voters);
 
-		PersonalLetterGenerator psg = new PersonalLetterGenerator(voters);
-		psg.chooseWritter("p");
+		PersonalLetterGenerator psg = new PersonalLetterGenerator(voters, "p");
 
 		psg.writeAllLetters();
 
