@@ -6,21 +6,12 @@ public class VoterInfo {
 	private String NIF;
 	private String email;
 	private String pollingPlace;
-	private int line;
 	
 	public VoterInfo(String name, String NIF, String email, String pollingPlace) {
 		this.name = name;
 		this.NIF = NIF;
 		this.email = email;
 		this.pollingPlace = pollingPlace;
-	}
-
-	public VoterInfo(String name, String NIF, String email, String pollingPlace, int line) {
-		this.name = name;
-		this.NIF = NIF;
-		this.email = email;
-		this.pollingPlace = pollingPlace;
-		this.line = line;
 	}
 
 	public String getName() {
@@ -39,15 +30,8 @@ public class VoterInfo {
 		return pollingPlace;
 	}
 	
-	public int getLine() {
-		return line;
-	}
-
 	public boolean isEmpty() {
-		return (name == null || name.isEmpty())
-				&& (NIF == null || NIF.isEmpty())
-				&& (email == null || email.isEmpty())
-				&& (pollingPlace == null || pollingPlace.isEmpty());
+		return name == null && NIF == null && email == null && pollingPlace == null;
 	}
 
 	@Override
