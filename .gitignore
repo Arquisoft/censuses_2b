@@ -6,7 +6,6 @@
 *.ear
 .classpath
 .settings/*
-/target
 /.idea
 .docx
 .pdf
