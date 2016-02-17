@@ -7,6 +7,10 @@ import es.uniovi.asw.model.Voter;
 
 public class PersonalLetterGenerator {
 	
+	private static PersonalLetterWriter pdfWriter = new PDFLetterWriter();
+	private static PersonalLetterWriter plainWriter = new PlainTextLetter();
+	private static PersonalLetterWriter wordWriter = new WordLetterWriter();
+	
 	private HashSet<PersonalLetterWriter> writers;
 
 	private List<Voter> voters;
@@ -27,16 +31,25 @@ public class PersonalLetterGenerator {
 		this.voters = voters;
 	}
 
+	public PersonalLetterGenerator(String... types) {
+		this.writers = new HashSet<PersonalLetterWriter>();
+		chooseWritters(types);
+	}
+	
+	public void setVoters(List<Voter> voters) {
+		this.voters = voters;
+	}
+
 	public void chooseWritters(String... types) {
 
 		for (String type:types) {
 			
 			if (type.contains("t")) {
-				writers.add(new PlainTextLetter());
+				writers.add(plainWriter);
 			} else if (type.contains("w")) {
-				writers.add(new WordLetterWriter());
+				writers.add(wordWriter);
 			} else if (type.contains("p")) {
-				writers.add(new PDFLetterWriter());
+				writers.add(pdfWriter);
 			}
 		}
 
