@@ -1,19 +1,14 @@
-package es.uniovi.asw;
+package es.uniovi.asw.testFallos;
 
 import java.io.IOException;
 import java.util.List;
 
-import org.junit.Test;
-
 import es.uniovi.asw.model.Voter;
 import es.uniovi.asw.parser.RCensusExcel;
-import es.uniovi.asw.testFallos.CheckFails;
 
-public class TestCheckFails {
+public class CheckFailsMain {
 
-	
-	@Test
-	public void testFails() throws IOException {
+	public static void main(String[] args) throws IOException {
 		CheckFails cf = new CheckFails();
 		List<Voter> voters = new RCensusExcel().read("src/test/resources/testCheck.xlsx");
 		cf.ComprobarFallos(voters);
