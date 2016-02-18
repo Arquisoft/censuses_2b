@@ -18,6 +18,7 @@ public class DataBaseTest {
 	public void test() {
 		new RCensusExcel().read("src/test/resources/testRight.xlsx");
 		Assert.assertNotNull(Parser.voterRepository.findByEmail("nauce@uniovi.es"));
+		Assert.assertNotNull(Parser.voterRepository.findByEmail("jorge@uniovi.es"));
 		
 	}
 
