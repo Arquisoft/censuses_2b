@@ -3,6 +3,8 @@ package es.uniovi.asw.parser;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import es.uniovi.asw.VoterRepository;
 
 /**
@@ -25,8 +27,13 @@ import es.uniovi.asw.VoterRepository;
  */
 public class Parser {
 
-	public static void run(VoterRepository voterRepository, String... args) {
+	@Autowired
+	public static VoterRepository voterRepository;
 	
+	public static void run(VoterRepository repository, String... args) {
+	
+		voterRepository = repository;
+		
 		List<String> writterFormatsToAll = new ArrayList<String>();
 		List<String> writterFormats = new ArrayList<String>();
 		String pathFile = null;

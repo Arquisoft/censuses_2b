@@ -29,10 +29,13 @@ public class PasswordGenerator {
 	public static void generatePasswords(List<Voter> voters) {
 
 		for (Voter voter : voters) {
-
 			voter.setPassword(generatePassword());
 		}
 
+	}
+	
+	public static void generatePasswords(Voter voter) {
+		voter.setPassword(generatePassword());
 	}
 
 }

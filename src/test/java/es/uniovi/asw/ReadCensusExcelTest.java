@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Assert;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import es.uniovi.asw.model.Voter;
@@ -13,6 +14,11 @@ import es.uniovi.asw.parser.RCensusExcel;
 
 public class ReadCensusExcelTest {
 
+	@BeforeClass
+	public static void initialize() {
+		LoadUsers.main();
+	}
+	
 	@Test
 	public void testReadEmpty() {
 		List<Voter> voters = new RCensusExcel().read("src/test/resources/testEmpty.xlsx");

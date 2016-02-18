@@ -20,7 +20,7 @@ public abstract class RCensus implements ReadCensus {
 		
 		List<VoterInfo> votersValues = readFile(path);
 		
-		List<Voter> voters = insertDB.insert(votersValues);
+		List<Voter> voters = insertDB.insert(votersValues, path);
 		
 		if (letterGenerator != null) {
 			letterGenerator.setVoters(voters);

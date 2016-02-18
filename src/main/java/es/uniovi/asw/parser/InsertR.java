@@ -9,8 +9,8 @@ import es.uniovi.asw.model.Voter;
 public class InsertR implements Insert {
 
 	@Override
-	public List<Voter> insert(List<VoterInfo> voterValues) {
-		return new InsertP().insert(voterValues);
+	public List<Voter> insert(List<VoterInfo> voterValues, String path) {
+		return new InsertP().insert(voterValues, path);
 	}
 
 }

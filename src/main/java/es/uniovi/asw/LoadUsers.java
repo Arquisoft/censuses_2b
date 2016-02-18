@@ -24,7 +24,6 @@ public class LoadUsers {
 	@Bean
 	public CommandLineRunner demo(VoterRepository repository) {
 		return (args) -> {
-			
 			Parser.run(repository, args);
 		};
 	
