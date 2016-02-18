@@ -9,7 +9,11 @@ import es.uniovi.asw.personalLetters.PersonalLetterGenerator;
 public abstract class RCensus implements ReadCensus {
 
 	private static Insert insertDB = new InsertR();
-	PersonalLetterGenerator letterGenerator;
+	private PersonalLetterGenerator letterGenerator;
+	
+	public RCensus(String... types) {
+		this.letterGenerator = new PersonalLetterGenerator(types);
+	}
 	
 	@Override
 	public List<Voter> read(String path) {
@@ -18,8 +22,10 @@ public abstract class RCensus implements ReadCensus {
 		
 		List<Voter> voters = insertDB.insert(votersValues);
 		
-		if (letterGenerator != null)
+		if (letterGenerator != null) {
+			letterGenerator.setVoters(voters);
 			letterGenerator.writeAllLetters();
+		}
 		
 		return voters;
 	}

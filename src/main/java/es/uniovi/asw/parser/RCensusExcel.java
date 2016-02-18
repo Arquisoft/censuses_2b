@@ -2,7 +2,6 @@ package es.uniovi.asw.parser;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -17,6 +16,10 @@ public class RCensusExcel extends RCensus implements ReadCensus{
 
 	private static Logger log = Logger.getLogger(RCensusExcel.class.getName());
 	
+	public RCensusExcel(String... writterFormats) {
+		super(writterFormats);
+	}
+
 	@Override
 	public List<VoterInfo> readFile(String path) {
 		XSSFWorkbook wb;
@@ -54,9 +57,10 @@ public class RCensusExcel extends RCensus implements ReadCensus{
 		} catch (FileNotFoundException e) {
 			String[] fileName = path.split("/");
 			log.info("El fichero " + fileName[fileName.length - 1] + " no existe");
+			System.out.println("No existe");
 		} catch (InvalidFormatException e) {
 			log.info("El fichero no es un .xslx");
-		} catch (IOException e) {
+		} catch (Exception e) {
 			log.info("Error de entrada en el fichero " + path);
 		}
 		
