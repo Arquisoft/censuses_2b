@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.springframework.dao.DataIntegrityViolationException;
 
 import es.uniovi.asw.model.Voter;
 import es.uniovi.asw.parser.Parser;
@@ -30,7 +31,13 @@ public class InsertP implements Insert {
 						Integer.parseInt((v.getPollingPlace().replace(".0", ""))));
 				voters.add(voter);
 				PasswordGenerator.generatePasswords(voter);
-				Parser.voterRepository.save(voter);
+				
+				try {
+					Parser.voterRepository.save(voter);
+				} catch (DataIntegrityViolationException e) {
+					voter = Parser.voterRepository.findByEmail(voter.getEmail()).get(0);
+					voters.add(voter);
+				}
 			}
 		}
 
