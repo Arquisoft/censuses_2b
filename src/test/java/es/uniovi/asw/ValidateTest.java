@@ -27,6 +27,7 @@ public class ValidateTest {
 			System.out.println(v.getName());
 		}
 		//assertEquals(1,Parser.voterRepository.findByEmail("nauce@uniovi.es").size());
+		//nada
 
 	}
 
