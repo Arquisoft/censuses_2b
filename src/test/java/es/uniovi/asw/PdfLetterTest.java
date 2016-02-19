@@ -11,7 +11,8 @@ import es.uniovi.asw.model.Voter;
 import es.uniovi.asw.personalLetters.PersonalLetterGenerator;
 import es.uniovi.asw.reportGeneration.PasswordGenerator;
 
-public class TestPdfLetter {
+
+public class PdfLetterTest {
 
 	private PersonalLetterGenerator letterGenerator;
 

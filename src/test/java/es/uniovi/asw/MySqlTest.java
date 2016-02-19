@@ -9,7 +9,7 @@ import org.junit.Test;
 import es.uniovi.asw.parser.Parser;
 import es.uniovi.asw.parser.RCensusExcel;
 
-public class TestMySql {
+public class MySqlTest {
 
 	@BeforeClass
 	public static void initialize() {
