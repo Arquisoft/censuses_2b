@@ -10,6 +10,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import es.uniovi.asw.model.Voter;
+import es.uniovi.asw.parser.Parser;
 import es.uniovi.asw.parser.RCensusExcel;
 
 public class ReadCensusExcelTest {
@@ -23,7 +24,7 @@ public class ReadCensusExcelTest {
 	public void testReadEmpty() {
 		List<Voter> voters = new RCensusExcel().read("src/test/resources/testEmpty.xlsx");
 		
-		//assertEquals(true, voters.isEmpty());
+		assertEquals(true, voters.isEmpty());
 	}
 	
 	@Test
@@ -44,8 +45,10 @@ public class ReadCensusExcelTest {
 				"jorge@uniovi.es",
 				220));
 		
-		//assertEquals(3, voters.size());
-		//Assert.assertArrayEquals(votersToCheck.toArray(), voters.toArray());
+		for (Voter voter:votersToCheck) {
+			Assert.assertTrue(voters.contains(voter));
+			Assert.assertNotNull(Parser.voterRepository.findByEmail(voter.getEmail()));
+		}
 	}
 
 

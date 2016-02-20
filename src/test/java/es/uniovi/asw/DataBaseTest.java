@@ -1,7 +1,5 @@
 package es.uniovi.asw;
 
-import static org.junit.Assert.assertEquals;
-
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -22,14 +20,7 @@ public class DataBaseTest {
 		Assert.assertNotNull(Parser.voterRepository.findByEmail("nauce@uniovi.es"));
 		Assert.assertNotNull(Parser.voterRepository.findByEmail("jorge@uniovi.es"));
 		
-		
-		//parte mysql
-		
-		//assertEquals(1, Parser.voterRepository.findByEmail("nauce@uniovi.es").size());
-		//assertEquals(0, Parser.voterRepository.findByEmail("nohay@uniovi.es").size());
-		//assertEquals(1, Parser.voterRepository.findByEmail("a@a.com").size());
-
-		
+		Assert.assertNull(Parser.voterRepository.findByEmail("nothing@uniovi.es"));
 	}
 
 }

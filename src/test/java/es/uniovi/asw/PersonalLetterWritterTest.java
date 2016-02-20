@@ -34,7 +34,7 @@ public class PersonalLetterWritterTest {
 		letterGenerator.writeAllLetters();
 
 		try {
-			reader = new BufferedReader(new FileReader("letters/" +voter.getNIF() + ".txt"));
+			reader = new BufferedReader(new FileReader("letters/" +voter.getNif() + ".txt"));
 		} catch (FileNotFoundException e) {
 
 			System.err.println("Archivo no encontrado");

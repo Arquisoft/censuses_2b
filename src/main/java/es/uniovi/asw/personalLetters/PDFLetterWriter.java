@@ -18,7 +18,7 @@ public class PDFLetterWriter implements PersonalLetterWriter {
 		Document document = new Document();
 		try {
 			PdfWriter writer = PdfWriter.getInstance(document,
-					new FileOutputStream("letters/" + voter.getNIF() + ".pdf"));
+					new FileOutputStream("letters/" + voter.getNif() + ".pdf"));
 			document.open();
 			putPdfInfo(document);
 			fillDocument(voter, document);

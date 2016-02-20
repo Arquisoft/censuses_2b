@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import es.uniovi.asw.VoterRepository;
+import es.uniovi.asw.dbupdate.VoterRepository;
 
 /**
  * [-c1 -c2 -cN]    file1 [-c2]    file2    fileN [-c1 -c3]
@@ -22,7 +22,7 @@ import es.uniovi.asw.VoterRepository;
  * -p	PDF format
  * -t	TXT format
  * 
- * @author Nauce
+ * @author Naucé López
  *
  */
 public class Parser {
@@ -30,9 +30,7 @@ public class Parser {
 	@Autowired
 	public static VoterRepository voterRepository;
 	
-	public static void run(VoterRepository repository, String... args) {
-	
-		voterRepository = repository;
+	public static void run(String... args) {
 		
 		List<String> writterFormatsToAll = new ArrayList<String>();
 		List<String> writterFormats = new ArrayList<String>();

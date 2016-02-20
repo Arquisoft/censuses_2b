@@ -39,7 +39,7 @@ public class WordLetterTest {
 
 		XWPFDocument docx;
 		try {
-			docx = new XWPFDocument(new FileInputStream("letters/" + voter.getNIF() +".docx"));
+			docx = new XWPFDocument(new FileInputStream("letters/" + voter.getNif() +".docx"));
 			XWPFWordExtractor we = new XWPFWordExtractor(docx);
 			String[] lines = we.getText().split("\n");
 			String email = lines[1].split(":\t")[1];

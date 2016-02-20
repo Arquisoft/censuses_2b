@@ -35,7 +35,7 @@ public class InsertP implements Insert {
 				try {
 					Parser.voterRepository.save(voter);
 				} catch (DataIntegrityViolationException e) {
-					voter = Parser.voterRepository.findByEmail(voter.getEmail()).get(0);
+					voter = Parser.voterRepository.findByEmail(voter.getEmail());
 					voters.add(voter);
 				}
 			}

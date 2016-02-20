@@ -6,6 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import es.uniovi.asw.dbupdate.VoterRepository;
 import es.uniovi.asw.parser.Parser;
 
 /**
@@ -24,7 +25,8 @@ public class LoadUsers {
 	@Bean
 	public CommandLineRunner demo(VoterRepository repository) {
 		return (args) -> {
-			Parser.run(repository, args);
+			Parser.voterRepository = repository;
+			Parser.run(args);
 		};
 	
 	}

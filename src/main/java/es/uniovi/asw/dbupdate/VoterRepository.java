@@ -1,6 +1,4 @@
-package es.uniovi.asw;
-
-import java.util.List;
+package es.uniovi.asw.dbupdate;
 
 import org.springframework.data.repository.CrudRepository;
 
@@ -8,10 +6,11 @@ import es.uniovi.asw.model.Voter;
 
 /**
  * 
- * @author NaucÃ© LÃ³pez
+ * @author Naucé López
  *
  */
 public interface VoterRepository extends CrudRepository<Voter, Long> {
 
-	List<Voter> findByEmail(String email);
+	Voter findByEmail(String email);
+	Voter findByNif(String nif);
 }

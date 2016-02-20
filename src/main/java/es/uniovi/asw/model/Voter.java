@@ -6,6 +6,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * 
+ * @author Naucé López
+ *
+ */
 @Entity
 @Table(name = "Census")
 public class Voter {
@@ -16,7 +21,7 @@ public class Voter {
 	@Column(nullable = false)
 	private String name;
 	@Column(unique = true, nullable = false)
-	private String NIF;
+	private String nif;
 	@Column(unique = true, nullable = false)
 	private String email;
 	private int pollingPlace;
@@ -25,16 +30,16 @@ public class Voter {
 	
 	protected Voter() {}
 
-	public Voter(String name, String NIF, String email, int pollingPlace) {
+	public Voter(String name, String nif, String email, int pollingPlace) {
 		this.name = name;
-		this.NIF = NIF;
+		this.nif = nif;
 		this.email = email;
 		this.pollingPlace = pollingPlace;
 	}
 
 	public Voter(String name, String NIF, String email, int pollingPlace, String password) {
 		this.name = name;
-		this.NIF = NIF;
+		this.nif = NIF;
 		this.email = email;
 		this.pollingPlace = pollingPlace;
 		this.password = password;
@@ -56,8 +61,8 @@ public class Voter {
 		return email;
 	}
 
-	public String getNIF() {
-		return NIF;
+	public String getNif() {
+		return nif;
 	}
 
 	public int getPollingPlace() {
@@ -70,7 +75,7 @@ public class Voter {
 	
 	@Override
 	public String toString() {
-		return "Voter [name=" + name + ", email=" + email + ", NIF=" + NIF + ", pollingPlace=" + pollingPlace
+		return "Voter [name=" + name + ", email=" + email + ", NIF=" + nif + ", pollingPlace=" + pollingPlace
 				+ ", password=" + password + "]";
 	}
 
@@ -78,7 +83,7 @@ public class Voter {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((NIF == null) ? 0 : NIF.hashCode());
+		result = prime * result + ((nif == null) ? 0 : nif.hashCode());
 		return result;
 	}
 
@@ -91,10 +96,10 @@ public class Voter {
 		if (getClass() != obj.getClass())
 			return false;
 		Voter other = (Voter) obj;
-		if (NIF == null) {
-			if (other.NIF != null)
+		if (nif == null) {
+			if (other.nif != null)
 				return false;
-		} else if (!NIF.equals(other.NIF))
+		} else if (!nif.equals(other.nif))
 			return false;
 		return true;
 	}

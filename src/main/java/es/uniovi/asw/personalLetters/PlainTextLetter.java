@@ -18,7 +18,7 @@ public class PlainTextLetter implements PersonalLetterWriter {
 	public void WriteLetter(Voter voter)  {
 
 		try {
-			setWriter(new FileWriter( "letters/" +voter.getNIF() + ".txt"));
+			setWriter(new FileWriter( "letters/" +voter.getNif() + ".txt"));
 			getWriter().write("Dear :" + "\t" + voter.getName() + "\n");
 			getWriter().write("User :" + "\t" + voter.getEmail() + "\n");
 			getWriter().write("Password :" + "\t" + voter.getPassword() + "\n");

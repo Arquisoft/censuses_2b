@@ -7,7 +7,7 @@ import es.uniovi.asw.model.Voter;
 
 public class PasswordGenerator {
 
-	public final static String pasworsPossibilities = "abcdefggijklmnopqrstuvwxyz0123456789";
+	public final static String pasworsPossibilities = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
 	public final static int passwordLength = 8;
 

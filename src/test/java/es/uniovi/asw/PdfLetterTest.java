@@ -36,7 +36,7 @@ public class PdfLetterTest {
 	public void testWritePlainLetter() {
 
 		try {
-			PdfReader reader = new PdfReader("letters/" + voter.getNIF() + ".pdf");
+			PdfReader reader = new PdfReader("letters/" + voter.getNif() + ".pdf");
 			String page = PdfTextExtractor.getTextFromPage(reader, 1);
 			String[] lines = page.split("\n");
 			String email = lines[1].split(":\t")[1];
