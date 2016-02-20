@@ -8,7 +8,7 @@ import javax.persistence.Table;
 
 /**
  * 
- * @author Naucé López
+ * @author Nauce Lopez
  *
  */
 @Entity

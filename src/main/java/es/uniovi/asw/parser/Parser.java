@@ -22,7 +22,7 @@ import es.uniovi.asw.dbupdate.VoterRepository;
  * -p	PDF format
  * -t	TXT format
  * 
- * @author Naucé López
+ * @author Nauce Lopez
  *
  */
 public class Parser {

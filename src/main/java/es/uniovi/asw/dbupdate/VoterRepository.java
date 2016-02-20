@@ -6,7 +6,7 @@ import es.uniovi.asw.model.Voter;
 
 /**
  * 
- * @author Naucé López
+ * @author Nauce Lopez
  *
  */
 public interface VoterRepository extends CrudRepository<Voter, Long> {
