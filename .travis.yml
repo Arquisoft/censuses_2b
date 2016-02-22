@@ -5,3 +5,5 @@ services:
   - mysql
 before_install:
 - mysql -e "create database IF NOT EXISTS test;" -uroot
+notifications:
+  slack: veigadevteam:2ZWGQ2aH21BZOdjj9dNm2nlX
