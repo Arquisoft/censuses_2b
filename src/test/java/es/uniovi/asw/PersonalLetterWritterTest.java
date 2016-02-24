@@ -62,5 +62,19 @@ public class PersonalLetterWritterTest {
 		}
 
 	}
+	
+	@Test(expected = FileNotFoundException.class)  
+	public void fileNotFound() throws FileNotFoundException{
+		
+		
+			try {
+				reader = new BufferedReader(new FileReader("ninguno"));
+			} catch (FileNotFoundException e) {
+				
+				throw e;
+			}
+		
+		
+	}
 
 }

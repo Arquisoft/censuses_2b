@@ -1,16 +1,13 @@
 package es.uniovi.asw;
 
 import static org.junit.Assert.*;
-
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
-
 import org.apache.poi.xwpf.extractor.XWPFWordExtractor;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.junit.Before;
 import org.junit.Test;
-
 import es.uniovi.asw.model.Voter;
 import es.uniovi.asw.personalLetters.PersonalLetterGenerator;
 import es.uniovi.asw.reportGeneration.PasswordGenerator;
@@ -39,7 +36,7 @@ public class WordLetterTest {
 
 		XWPFDocument docx;
 		try {
-			docx = new XWPFDocument(new FileInputStream("letters/" + voter.getNif() +".docx"));
+			docx = new XWPFDocument(new FileInputStream("letters/" + voter.getNif() + ".docx"));
 			XWPFWordExtractor we = new XWPFWordExtractor(docx);
 			String[] lines = we.getText().split("\n");
 			String email = lines[1].split(":\t")[1];
@@ -47,9 +44,23 @@ public class WordLetterTest {
 			assertEquals(voter.getEmail(), email);
 			assertEquals(voter.getPassword(), password);
 			we.close();
-			
+
 		} catch (IOException e) {
 			e.printStackTrace();
+		}
+
+	}
+
+	@SuppressWarnings("resource")
+	@Test(expected = IOException.class)
+	public void fileNotFound() throws IOException {
+
+		@SuppressWarnings("unused")
+		XWPFDocument docx;
+		try {
+			docx = new XWPFDocument(new FileInputStream("noLetter"));
+		} catch (IOException e) {
+			throw e;
 		}
 
 	}

@@ -11,7 +11,6 @@ import es.uniovi.asw.model.Voter;
 import es.uniovi.asw.personalLetters.PersonalLetterGenerator;
 import es.uniovi.asw.reportGeneration.PasswordGenerator;
 
-
 public class PdfLetterTest {
 
 	private PersonalLetterGenerator letterGenerator;
@@ -46,6 +45,17 @@ public class PdfLetterTest {
 
 		} catch (IOException e) {
 			System.err.println("Archivo no encontrado");
+		}
+
+	}
+
+	@Test(expected = IOException.class)
+	public void fileNotFound() throws IOException {
+		try {
+			PdfReader reader = new PdfReader("noLetter");
+			reader.close();
+		} catch (IOException e) {
+			throw e;
 		}
 
 	}

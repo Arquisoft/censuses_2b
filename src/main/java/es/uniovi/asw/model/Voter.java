@@ -37,13 +37,6 @@ public class Voter {
 		this.pollingPlace = pollingPlace;
 	}
 
-	public Voter(String name, String NIF, String email, int pollingPlace, String password) {
-		this.name = name;
-		this.nif = NIF;
-		this.email = email;
-		this.pollingPlace = pollingPlace;
-		this.password = password;
-	}
 
 	public Long getId() {
 		return id;
