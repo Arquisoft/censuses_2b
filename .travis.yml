@@ -3,8 +3,10 @@ jdk:
 - oraclejdk8
 services:
   - mysql
+  
 before_install:
-- pip install codecov
+- pip install codecov  
+before_install:
 - mysql -e "create database IF NOT EXISTS test;" -uroot
 
 notifications:
