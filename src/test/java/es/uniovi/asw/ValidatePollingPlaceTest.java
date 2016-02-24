@@ -11,7 +11,7 @@ import es.uniovi.asw.model.Voter;
 import es.uniovi.asw.parser.Parser;
 import es.uniovi.asw.parser.RCensusExcel;
 
-public class ValidateTestPollingPlace {
+public class ValidatePollingPlaceTest {
 
 	
 	@BeforeClass
@@ -19,7 +19,7 @@ public class ValidateTestPollingPlace {
 		LoadUsers.main();
 	}
 	@Test
-	public void test1() {
+	public void test() {
 		List<Voter> chequeados = new RCensusExcel().read("src/test/resources/test4.xlsx");
 		for(Voter v:chequeados){
 			System.out.println(v.getName());
