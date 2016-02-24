@@ -3,12 +3,15 @@ jdk:
 - oraclejdk8
 services:
   - mysql
-before_install:
-  - pip install --user codecov 
+
 before_install:
 - mysql -e "create database IF NOT EXISTS test;" -uroot
 
 notifications:
   slack: veigadevteam:2ZWGQ2aH21BZOdjj9dNm2nlX
+
+service_name: travis-pro
+repo_token: tgnUXFTdDLPuXF5s2f6T73gGdqEskitd3
 after_success:
-  - codecov
+  - mvn clean test jacoco:report coveralls:report
+
