@@ -4,8 +4,9 @@ jdk:
 services:
   - mysql
 before_install:
+- pip install codecov
 - mysql -e "create database IF NOT EXISTS test;" -uroot
- - pip install codecov
+
 notifications:
   slack: veigadevteam:2ZWGQ2aH21BZOdjj9dNm2nlX
 after_success:
