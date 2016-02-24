@@ -112,6 +112,7 @@
 	</dependencies>
 	<!--Build plugins -->
 	<build>
+		<sourceDirectory>src/main/java</sourceDirectory>
 		<pluginManagement>
 			<plugins>
 				<plugin>
