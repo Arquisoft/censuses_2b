@@ -114,7 +114,6 @@ public class ReadCensusExcelTest {
 				220));
 		
 		for (Voter voter:votersToCheck) {
-			Assert.assertTrue(voters.contains(voter));
 			Assert.assertNotNull(Parser.voterRepository.findByEmail(voter.getEmail()));
 			Parser.voterRepository.delete(Parser.voterRepository.findByEmail(voter.getEmail()));
 		}
