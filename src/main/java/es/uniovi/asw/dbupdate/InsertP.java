@@ -2,10 +2,11 @@ package es.uniovi.asw.dbupdate;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
-import org.apache.log4j.Logger;
 import org.springframework.dao.DataIntegrityViolationException;
 
+import es.uniovi.asw.LoadUsers;
 import es.uniovi.asw.model.Voter;
 import es.uniovi.asw.parser.Parser;
 import es.uniovi.asw.parser.VoterInfo;
@@ -15,9 +16,13 @@ import es.uniovi.asw.testFallos.CheckFails;
 
 public class InsertP implements Insert {
 
-	private static Logger log = Logger.getLogger(InsertP.class);
+	private static Logger log = Logger.getLogger(InsertP.class.getName());
 	CheckFails cf = new CheckFails();
-
+	
+	public InsertP() {
+		LoadUsers.configureLogger(log);
+	}
+	
 	@Override
 	public List<Voter> insert(List<VoterInfo> voterValues, String path) {
 		List<Voter> voters = new ArrayList<Voter>();
