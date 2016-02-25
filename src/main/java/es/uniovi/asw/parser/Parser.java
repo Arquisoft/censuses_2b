@@ -68,11 +68,11 @@ public class Parser {
 			sb.append("-t\tFormato TXT\n");
 			sb.append("-p\tFormato PDF\n");
 			sb.append("-w\tFormato Word\n\n");
-			sb.append("Los parámetros (-p1 ... -pN) se indican para elegir los formatos de salida"
+			sb.append("Los parametros (-p1 ... -pN) se indican para elegir los formatos de salida"
 					+ " de las cartas personales.\n");
-			sb.append("Los parámetros del comienzo serán aplicados a todos los ficheros"
-					+ " en caso de que no tengan a su derecha otros parámetros especificados\n");
-			sb.append("Si no se especifica ningún parámetro, las cartas personales serán"
+			sb.append("Los parametros del comienzo seran aplicados a todos los ficheros"
+					+ " en caso de que no tengan a su derecha otros parametros especificados\n");
+			sb.append("Si no se especifica ningun parametro, las cartas personales seran"
 						+ " generadas en formato txt por defecto.\n\n");
 			sb.append("quit - salir del programa");
 			
