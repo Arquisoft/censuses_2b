@@ -20,13 +20,16 @@ public class ValidateNifTest {
 	@Test
 	public void test() {
 		List<Voter> chequeados = new RCensusExcel().read("src/test/resources/test1.xlsx");
-		for(Voter v:chequeados){
-			System.out.println(v.getName());
-		}
+		
 		assertNotNull(Parser.voterRepository.findByEmail("gg@uniovi.es"));
 		assertNull(Parser.voterRepository.findByEmail("hh@uniovi.es"));
 		assertNull(Parser.voterRepository.findByEmail("ii@uniovi.es"));
 		assertNotNull(Parser.voterRepository.findByEmail("jj@uniovi.es"));
+		
+		for (Voter voter:chequeados) {
+			assertNotNull(Parser.voterRepository.findByEmail(voter.getEmail()));
+			Parser.voterRepository.delete(voter);
+		}
 	}
 
 }

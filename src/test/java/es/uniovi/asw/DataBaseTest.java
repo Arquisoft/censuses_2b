@@ -1,11 +1,13 @@
 package es.uniovi.asw;
 
-import org.junit.Assert;
+import static org.junit.Assert.assertNotNull;
+
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import es.uniovi.asw.model.Voter;
 import es.uniovi.asw.parser.Parser;
-import es.uniovi.asw.parser.RCensusExcel;
+import es.uniovi.asw.reportGeneration.PasswordGenerator;
 
 public class DataBaseTest {
 
@@ -16,11 +18,19 @@ public class DataBaseTest {
 	
 	@Test
 	public void test() {
-		new RCensusExcel().read("src/test/resources/testRight.xlsx");
-		Assert.assertNotNull(Parser.voterRepository.findByEmail("nauce@uniovi.es"));
-		Assert.assertNotNull(Parser.voterRepository.findByEmail("jorge@uniovi.es"));
-		
-		Assert.assertNull(Parser.voterRepository.findByEmail("nothing@uniovi.es"));
+		Voter voter;
+		String letras = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		for (int i=0; i < letras.length() ; i++) {
+			voter = new Voter("nombreTestDataBase" + i,
+					"8888888" + i%10 + letras.charAt(i),
+					"emailTestDataBase" + i + "@test.com",
+					5000);
+			PasswordGenerator.generatePasswords(voter);
+			
+			Parser.voterRepository.save(voter);
+			assertNotNull(Parser.voterRepository.findByEmail(voter.getEmail()));
+			Parser.voterRepository.delete(voter);
+		}
 	}
 
 }

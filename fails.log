@@ -1,18 +1,18 @@
-25/02/2016 16:47:46 - null -> Línea 0: Nombre vacío --- ---
-25/02/2016 16:47:46 - null -> Línea 0: NIF vacío --- ---
-25/02/2016 16:47:46 - null -> Línea 0: Email vacío --- ---
-25/02/2016 16:47:46 - null -> Línea 0: PollingPlace vacío --- ---
-25/02/2016 16:47:46 - null -> Línea 0: NIF no válido --- 123456784Q ---
-25/02/2016 16:47:46 - null -> Línea 0: Email no válido --- jonasuniovi.es ---
-25/02/2016 16:47:46 - null -> Línea 0: PollingPlace no válido --- -1 ---
-25/02/2016 16:47:46 - null -> Línea 0: Nombre vacío --- ---
-25/02/2016 16:47:46 - null -> Línea 0: NIF no válido --- 123456783 ---
-25/02/2016 16:47:46 - null -> Línea 0: Email no válido --- jonas@uniovies. ---
-25/02/2016 16:47:52 - src/test/resources/testCheck.xlsx -> Línea 1: Email no válido --- wwuniovi.es ---
-25/02/2016 16:47:52 - src/test/resources/testCheck.xlsx -> Línea 3: Email vacío --- ---
-25/02/2016 16:47:52 - src/test/resources/testCheck.xlsx -> Línea 4: Email no válido --- mm@uniovies. ---
-25/02/2016 16:47:54 - src/test/resources/test2.xlsx -> Línea 2: Nombre vacío --- ---
-25/02/2016 16:47:54 - src/test/resources/test2.xlsx -> Línea 3: Nombre vacío --- ---
-25/02/2016 16:47:56 - src/test/resources/test4.xlsx -> Línea 3: PollingPlace no válido --- -9.0 ---
-25/02/2016 16:47:58 - src/test/resources/test1.xlsx -> Línea 2: NIF no válido --- 9.99999999E8 ---
-25/02/2016 16:47:58 - src/test/resources/test1.xlsx -> Línea 3: NIF no válido --- 131313131I ---
+25/02/2016 18:12:22 - null -> Línea 0: Nombre vacío --- ---
+25/02/2016 18:12:22 - null -> Línea 0: NIF vacío --- ---
+25/02/2016 18:12:22 - null -> Línea 0: Email vacío --- ---
+25/02/2016 18:12:22 - null -> Línea 0: PollingPlace vacío --- ---
+25/02/2016 18:12:22 - null -> Línea 0: NIF no válido --- 123456784Q ---
+25/02/2016 18:12:22 - null -> Línea 0: Email no válido --- jonasuniovi.es ---
+25/02/2016 18:12:22 - null -> Línea 0: PollingPlace no válido --- -1 ---
+25/02/2016 18:12:22 - null -> Línea 0: Nombre vacío --- ---
+25/02/2016 18:12:22 - null -> Línea 0: NIF no válido --- 123456783 ---
+25/02/2016 18:12:22 - null -> Línea 0: Email no válido --- jonas@uniovies. ---
+25/02/2016 18:12:28 - src/test/resources/testCheck.xlsx -> Línea 1: Email no válido --- wwuniovi.es ---
+25/02/2016 18:12:28 - src/test/resources/testCheck.xlsx -> Línea 3: Email vacío --- ---
+25/02/2016 18:12:28 - src/test/resources/testCheck.xlsx -> Línea 4: Email no válido --- mm@uniovies. ---
+25/02/2016 18:12:30 - src/test/resources/test2.xlsx -> Línea 2: Nombre vacío --- ---
+25/02/2016 18:12:30 - src/test/resources/test2.xlsx -> Línea 3: Nombre vacío --- ---
+25/02/2016 18:12:33 - src/test/resources/test4.xlsx -> Línea 3: PollingPlace no válido --- -9.0 ---
+25/02/2016 18:12:34 - src/test/resources/test1.xlsx -> Línea 2: NIF no válido --- 9.99999999E8 ---
+25/02/2016 18:12:34 - src/test/resources/test1.xlsx -> Línea 3: NIF no válido --- 131313131I ---

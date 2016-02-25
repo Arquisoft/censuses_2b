@@ -21,12 +21,15 @@ public class ValidatePollingPlaceTest {
 	@Test
 	public void test() {
 		List<Voter> chequeados = new RCensusExcel().read("src/test/resources/test4.xlsx");
-		for(Voter v:chequeados){
-			System.out.println(v.getName());
-		}
+		
 		assertNotNull(Parser.voterRepository.findByEmail("aa@uniovi.es"));
 		assertNotNull(Parser.voterRepository.findByEmail("bb@uniovi.es"));
 		assertNull(Parser.voterRepository.findByEmail("cc@uniovi.es"));
+		
+		for (Voter voter:chequeados) {
+			assertNotNull(Parser.voterRepository.findByEmail(voter.getEmail()));
+			Parser.voterRepository.delete(voter);
+		}
 	}
 
 

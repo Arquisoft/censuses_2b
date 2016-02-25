@@ -20,12 +20,15 @@ public class ValidateNameTest {
 	@Test
 	public void test() {
 		List<Voter> chequeados = new RCensusExcel().read("src/test/resources/test2.xlsx");
-		for(Voter v:chequeados){
-			System.out.println(v.getName());
-		}
+	
 		assertNotNull(Parser.voterRepository.findByEmail("dd@uniovi.es"));
 		assertNull(Parser.voterRepository.findByEmail("ee@uniovi.es"));
 		assertNull(Parser.voterRepository.findByEmail("ff@uniovi.es"));
+		
+		for (Voter voter:chequeados) {
+			assertNotNull(Parser.voterRepository.findByEmail(voter.getEmail()));
+			Parser.voterRepository.delete(voter);
+		}
 	}
 	
 }

@@ -22,11 +22,13 @@ public class ValidateOkTest {
 	@Test
 	public void test() {
 		List<Voter> chequeados = new RCensusExcel().read("src/test/resources/test3.xlsx");
-		for(Voter v:chequeados){
-			System.out.println(v.getName());
-		}
+		
 		assertNotNull(Parser.voterRepository.findByEmail("ramon@uniovi.es"));
 
+		for (Voter voter:chequeados) {
+			assertNotNull(Parser.voterRepository.findByEmail(voter.getEmail()));
+			Parser.voterRepository.delete(voter);
+		}
 	}
 	
 	

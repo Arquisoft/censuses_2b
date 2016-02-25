@@ -13,6 +13,8 @@ public abstract class RCensus implements ReadCensus {
 	
 	public RCensus(String... types) {
 		this.letterGenerator = new PersonalLetterGenerator(types);
+		if (types.length == 0)
+			this.letterGenerator.chooseWritters("-t");
 	}
 	
 	@Override
