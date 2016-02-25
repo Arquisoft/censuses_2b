@@ -40,9 +40,8 @@ public class Parser {
 	}
 	
 	private static void readCommand() {
+		command = Console.readString(">");
 		if (!command.equals("quit")) {
-			command = Console.readString(">");
-			
 			if (command.equals("-h")) {
 				help(null);
 				readCommand();
