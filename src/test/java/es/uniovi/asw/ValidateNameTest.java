@@ -15,7 +15,7 @@ public class ValidateNameTest {
 
 	@BeforeClass
 	public static void initialize() {
-		LoadUsers.main();
+		LoadUsers.main("//test");
 	}
 	@Test
 	public void test() {

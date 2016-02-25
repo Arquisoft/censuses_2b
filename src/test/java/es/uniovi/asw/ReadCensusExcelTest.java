@@ -24,7 +24,7 @@ public class ReadCensusExcelTest {
 
 	@BeforeClass
 	public static void initialize() {
-		LoadUsers.main("-h");
+		LoadUsers.main("//test");
 	}
 	
 	@Test

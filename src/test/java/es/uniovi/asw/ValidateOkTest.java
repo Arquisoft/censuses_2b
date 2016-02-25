@@ -16,7 +16,7 @@ public class ValidateOkTest {
 	
 	@BeforeClass
 	public static void initialize() {
-		LoadUsers.main();
+		LoadUsers.main("//test");
 	}
 	
 	@Test

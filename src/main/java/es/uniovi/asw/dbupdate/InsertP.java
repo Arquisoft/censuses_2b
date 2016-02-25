@@ -24,18 +24,25 @@ public class InsertP implements Insert {
 			if (CheckFails.check(v)) {
 				voter = new Voter(v.getName(), v.getNIF(), v.getEmail(),
 						Integer.parseInt((v.getPollingPlace().replace(".0", ""))));
-				voters.add(voter);
 				PasswordGenerator.generatePasswords(voter);
 				
 				try {
 					Parser.voterRepository.save(voter);
+					voters.add(voter);
 				} catch (DataIntegrityViolationException e) {
 					voter = Parser.voterRepository.findByEmail(voter.getEmail());
 					voters.add(voter);
 				}
 			}
 		}
-
+		
+		System.out.println(voterValues.size() + " filas leídas del fichero");
+		
+		if (voterValues.size() > voters.size())
+			System.out.println((voterValues.size() - voters.size()) + " filas con errores en el fichero (ver fails.log para más información)");
+		
+		System.out.println("Se han registrado " + voters.size() + " votantes y generado las cartas personales");
+		
 		// Devuelve los votantes insertados
 		return voters;
 	}

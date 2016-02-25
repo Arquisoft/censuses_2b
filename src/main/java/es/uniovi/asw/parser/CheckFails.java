@@ -1,11 +1,11 @@
 package es.uniovi.asw.parser;
 
-import es.uniovi.asw.reportwritter.WReportP;
+import es.uniovi.asw.dbupdate.WReportR;
 import es.uniovi.asw.reportwritter.WriteReport;
 
 public class CheckFails {
 
-	private static final WriteReport reporter = new WReportP();
+	private static final WriteReport reporter = new WReportR();
 	public static String file;
 	
 	public static boolean check(VoterInfo v) {

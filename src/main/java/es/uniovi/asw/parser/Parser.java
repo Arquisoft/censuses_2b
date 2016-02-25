@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import es.uniovi.asw.dbupdate.VoterRepository;
+import es.uniovi.asw.util.Console;
 
 /**
  * [-c1 -c2 -cN]    file1 [-c2]    file2    fileN [-c1 -c3]
@@ -29,17 +30,66 @@ public class Parser {
 
 	@Autowired
 	public static VoterRepository voterRepository;
+	private static String command = "";
 	
 	public static void run(String... args) {
+		if (!args[0].equals("//test")) {
+			help(null);
+			parse(args);
+		}
+	}
+	
+	private static void readCommand() {
+		if (!command.equals("quit")) {
+			command = Console.readString(">");
+			
+			if (command.equals("-h")) {
+				help(null);
+				readCommand();
+			}
+			else
+				parse(command.split(" "));
+		}
+	}
+	
+	private static void readFile(String pathFile, String... writterFormats) {
+		if (pathFile.endsWith(".xlsx"))
+			new RCensusExcel(writterFormats).read(pathFile);
+		else
+			System.out.println(pathFile + " -> Extensión de fichero no reconocida");
+	}
+	
+	private static boolean help(String help) {
+		if (help== null || help.equals("-h")) {
+			StringBuilder sb = new StringBuilder();
+			
+			sb.append("help (-h):\n\n");
+			sb.append("[-p1 -p2 ... -pN]   file1 [-p2]   file2   ...   fileN [-p1 -p3]\n\n");
+			sb.append("-t\tFormato TXT\n");
+			sb.append("-p\tFormato PDF\n");
+			sb.append("-w\tFormato Word\n\n");
+			sb.append("Los parámetros (-p1 ... -pN) se indican para elegir los formatos de salida"
+					+ " de las cartas personales.\n");
+			sb.append("Los parámetros del comienzo serán aplicados a todos los ficheros"
+					+ " en caso de que no tengan a su derecha otros parámetros especificados\n");
+			sb.append("Si no se especifica ningún parámetro, las cartas personales serán"
+						+ " generadas en formato txt por defecto.\n\n");
+			sb.append("quit - salir del programa");
+			
+			System.out.println(sb.toString());
+			
+			return false;
+		}
 		
+		return true;
+	}
+	
+	private static void parse(String... args) {
 		List<String> writterFormatsToAll = new ArrayList<String>();
 		List<String> writterFormats = new ArrayList<String>();
 		String pathFile = null;
 		
 		int i = 0;
-		
-		if (args.length == 0)
-			help(null);
 		
 		while(i < args.length && args[i].startsWith("-")) {
 			if (help(args[i]));
@@ -64,35 +114,7 @@ public class Parser {
 			
 			writterFormats.clear();
 		}
-			
-	}
-	
-	private static void readFile(String pathFile, String... writterFormats) {
-		if (pathFile.endsWith(".xlsx"))
-			new RCensusExcel(writterFormats).read(pathFile);
-	}
-	
-	private static boolean help(String help) {
-		if (help== null || help.equals("-h")) {
-			StringBuilder sb = new StringBuilder();
-			
-			sb.append("help (-h):\n\n");
-			sb.append("[-p1 -p2 ... -pN]   file1 [-p2]   file2   ...   fileN [-p1 -p3]\n\n");
-			sb.append("-t\tFormato TXT\n");
-			sb.append("-p\tFormato PDF\n");
-			sb.append("-w\tFormato Word\n\n");
-			sb.append("Los parámetros (-p1 ... -pN) se indican para elegir los formatos de salida"
-					+ " de las cartas personales.\n");
-			sb.append("Los parámetros del comienzo serán aplicados a todos los ficheros"
-					+ " en caso de que no tengan a su derecha otros parámetros especificados\n");
-			sb.append("Si no se especifica ningún parámetro, las cartas personales serán"
-						+ " generadas en formato txt por defecto.\n");
-			
-			System.out.println(sb.toString());
-			
-			return false;
-		}
 		
-		return true;
+		readCommand();
 	}
 }

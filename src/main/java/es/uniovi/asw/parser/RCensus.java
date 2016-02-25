@@ -7,7 +7,7 @@ import es.uniovi.asw.model.Voter;
 import es.uniovi.asw.personalLetters.PersonalLetterGenerator;
 
 public abstract class RCensus implements ReadCensus {
-
+	
 	private static Insert insertDB = new InsertR();
 	private PersonalLetterGenerator letterGenerator;
 	

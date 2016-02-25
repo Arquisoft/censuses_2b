@@ -1,11 +1,9 @@
 package es.uniovi.asw.parser;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.logging.Logger;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Row;
@@ -13,8 +11,6 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class RCensusExcel extends RCensus implements ReadCensus{
-
-	private static Logger log = Logger.getLogger(RCensusExcel.class.getName());
 	
 	public RCensusExcel(String... writterFormats) {
 		super(writterFormats);
@@ -33,6 +29,7 @@ public class RCensusExcel extends RCensus implements ReadCensus{
 		try {
 
 			wb = new XSSFWorkbook(new File(path));
+			System.out.println("Leyendo fichero " + path);
 			sheet = wb.getSheetAt(0);
 			rows = sheet.iterator();
 				
@@ -54,13 +51,11 @@ public class RCensusExcel extends RCensus implements ReadCensus{
 					
 			}
 								
-		} catch (FileNotFoundException e) {
-			String[] fileName = path.split("/");
-			log.info("El fichero " + fileName[fileName.length - 1] + " no existe");
 		} catch (InvalidFormatException e) {
-			log.info("El fichero no es un .xslx");
+			System.out.println("El fichero no es un .xlsx");
 		} catch (Exception e) {
-			log.info("Error de entrada en el fichero " + path);
+			String[] fileName = path.split("/");
+			System.out.println("El fichero " + fileName[fileName.length - 1] + " no existe");
 		}
 		
 		return voterValues;

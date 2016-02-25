@@ -13,7 +13,7 @@ public class DataBaseTest {
 
 	@BeforeClass
 	public static void initialize() {
-		LoadUsers.main();
+		LoadUsers.main("//test");
 	}
 	
 	@Test

@@ -1,5 +1,0 @@
-Dear :	nombreTestWrite30
-User :	emailTestWrite30@test.com
-Password :	PFKsNVfQ
-Thanks for using our service, hope all went well.
-Thu Feb 25 17:45:10 CET 2016
