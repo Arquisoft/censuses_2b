@@ -57,7 +57,6 @@ public class RCensusExcel extends RCensus implements ReadCensus{
 		} catch (FileNotFoundException e) {
 			String[] fileName = path.split("/");
 			log.info("El fichero " + fileName[fileName.length - 1] + " no existe");
-			System.out.println("No existe");
 		} catch (InvalidFormatException e) {
 			log.info("El fichero no es un .xslx");
 		} catch (Exception e) {

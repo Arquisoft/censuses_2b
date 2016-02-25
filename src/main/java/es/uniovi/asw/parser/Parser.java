@@ -38,8 +38,12 @@ public class Parser {
 		
 		int i = 0;
 		
+		if (args.length == 0)
+			help(null);
+		
 		while(i < args.length && args[i].startsWith("-")) {
-			writterFormatsToAll.add(args[i]);
+			if (help(args[i]));
+				writterFormatsToAll.add(args[i]);
 			i++;
 		}
 		
@@ -48,7 +52,8 @@ public class Parser {
 			i++;
 			
 			while (i < args.length && args[i].startsWith("-")) {
-				writterFormats.add(args[i]);
+				if (help(args[i]));
+					writterFormats.add(args[i]);
 				i++;
 			}
 			
@@ -65,5 +70,29 @@ public class Parser {
 	private static void readFile(String pathFile, String... writterFormats) {
 		if (pathFile.endsWith(".xlsx"))
 			new RCensusExcel(writterFormats).read(pathFile);
+	}
+	
+	private static boolean help(String help) {
+		if (help== null || help.equals("-h")) {
+			StringBuilder sb = new StringBuilder();
+			
+			sb.append("help (-h):\n\n");
+			sb.append("[-p1 -p2 ... -pN]   file1 [-p2]   file2   ...   fileN [-p1 -p3]\n\n");
+			sb.append("-t\tFormato TXT\n");
+			sb.append("-p\tFormato PDF\n");
+			sb.append("-w\tFormato Word\n\n");
+			sb.append("Los parámetros (-p1 ... -pN) se indican para elegir los formatos de salida"
+					+ " de las cartas personales.\n");
+			sb.append("Los parámetros del comienzo serán aplicados a todos los ficheros"
+					+ " en caso de que no tengan a su derecha otros parámetros especificados\n");
+			sb.append("Si no se especifica ningún parámetro, las cartas personales serán"
+						+ " generadas en formato txt por defecto.\n");
+			
+			System.out.println(sb.toString());
+			
+			return false;
+		}
+		
+		return true;
 	}
 }
