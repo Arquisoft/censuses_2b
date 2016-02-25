@@ -33,7 +33,7 @@ public class Parser {
 	private static String command = "";
 	
 	public static void run(String... args) {
-		if (!args[0].equals("//test")) {
+		if (args.length == 0 || args.length > 0 && !args[0].equals("//test")) {
 			help(null);
 			parse(args);
 		}
